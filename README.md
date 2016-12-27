@@ -5,9 +5,12 @@ es6 template-tag function for cowsay
 ## Usage
 
 ```
+const cowsay = require('cowsay-tag');
+// or `import cowsay from 'cowsay-tag';`
+
 cowsay`Just type cowsay before your
 template string, and the
-cow will say it!`
+cow will say it!`;
 ```
 
 outputs
@@ -18,11 +21,11 @@ outputs
 | template string, and the     |
 \ cow will say it!             /
  ------------------------------
-   \    ^__^
-    \   (oo)_______
-       (__)       )/\
-           ||----w |
-           ||     ||
+  \    ^__^
+   \   (oo)_______
+      (__)       )/\
+        ||----w |
+        ||     ||
 ```
 
 ## Thanks
