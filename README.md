@@ -1,4 +1,4 @@
-# cowsay-tag [![Build Status](https://travis-ci.org/jlmitch5/cowsay-tag.svg?branch=master)](https://travis-ci.org/jlmitch5/cowsay-tag)
+# cowsay-tag [![Build Status](https://travis-ci.org/jlmitch5/cowsay-tag.svg?branch=master)](https://travis-ci.org/jlmitch5/cowsay-tag) [![npm version](https://badge.fury.io/js/cowsay-tag.svg)](https://badge.fury.io/js/cowsay-tag)
 
 es6 template-tag function for cowsay
 
