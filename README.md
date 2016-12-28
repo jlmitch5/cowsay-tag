@@ -5,9 +5,6 @@ es6 template-tag function for cowsay
 ## Usage
 
 ```
-const cowsay = require('cowsay-tag');
-// or `import cowsay from 'cowsay-tag';`
-
 cowsay`Just type cowsay before your
 template string, and the
 cow will say it!`;
@@ -87,6 +84,37 @@ outputs
    \  I'm
     \ a
       cow!
+```
+
+## including cowsay-tag in your app:
+
+using the UMD module (cowsay-tag.js/`npm install cowsay-tag`):
+
+```
+const cowsay = require('cowsay-tag');
+// or import cowsay from 'cowsay-tag';
+
+cowsay`This works`;
+```
+
+using the script-friendly module (cowsay-tag.min.js):
+
+```
+<head>
+  <script
+    src="https://raw.githubusercontent.com/jlmitch5/cowsay-tag/master/lib/cowsay-tag.min.js">
+  </script>
+  <script
+    src="https://raw.githubusercontent.com/jlmitch5/cowsay-tag/master/lib/cowsay-tag.min.js.map">
+  </script>
+</head>
+<body>
+  <script>
+    cowsay`this works.`;
+
+    window.cowsay`this also works.`;
+  </script>
+</body>
 ```
 
 ## Thanks
