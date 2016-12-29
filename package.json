@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack --progress --colors --watch",
-    "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
+    "test": "nodemon --config .nodemon.json --exec 'npm run build && npm run test:ci'",
     "test:ci": "mocha --compilers js:babel-core/register --colors ./test/*.spec.js"
   },
   "devDependencies": {
@@ -20,6 +20,7 @@
     "eslint": "1.7.2",
     "eslint-loader": "1.1.0",
     "mocha": "2.3.4",
+    "nodemon": "^1.11.0",
     "webpack": "1.12.9",
     "wrapper-webpack-plugin": "^0.1.11"
   },
