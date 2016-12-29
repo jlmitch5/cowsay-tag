@@ -36,7 +36,7 @@ const scriptConfig = {
         new UglifyJsPlugin({ minimize: true }),
         // used so that we can require the prod bundle in test
         new WrapperPlugin({
-          footer: 'if (module !== undefined) { module.exports = cowsay; }'
+          footer: 'if (typeof(module) !== "undefined") { module.exports = cowsay; }'
         })
     ]
 };
