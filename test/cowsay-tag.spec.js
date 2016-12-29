@@ -6,7 +6,51 @@ chai.expect();
 
 const expect = chai.expect;
 
-import cowsay from '../lib/cowsay-tag';
+import cowsayDev from '../lib/cowsay-tag';
+import cowsayProd from '../lib/cowsay-tag.min';
+
+function DevProdDiscrepancyException(context) {
+   this.message = `context: ${context}`;
+   this.name = 'DevProdDiscrepancyException';
+}
+
+// this calls both the dev and prod versions of the cowsay tag function to
+// make sure they both return the same thing for each test
+const cowsay = function(...args) {
+
+    const fromDev = cowsayDev.apply(this, args);
+    const fromProd = cowsayProd.apply(this, args);
+    const throwException = function(a, b) {
+        throw new DevProdDiscrepancyException(`${a} !== ${b}`);
+    };
+
+    let returnVal;
+
+
+    if (typeof fromDev !== "function" && fromDev !== fromProd) {
+        throwException(fromDev, fromProd);
+    } else if (typeof fromDev === "function") {
+        // for the cowsay('custom')`foo` case, cowsay will return
+        // a function that will need to be called again to return
+        // the actual cowsay value
+        returnVal = function(...args) {
+            const fromDevPrime = fromDev.apply(this, args);
+            const fromProdPrime = fromProd.apply(this, args);
+
+            if (fromDevPrime !== fromProdPrime) {
+                throwException(fromDevPrime, fromProdPrime);
+            }
+
+            return fromDevPrime;
+        };
+    } else {
+        returnVal = fromDev;
+    }
+
+    return returnVal;
+};
+
+
 import cows from '../src/cows';
 
 describe('Cowsay tag conversion', function() {
