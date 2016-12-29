@@ -1,11 +1,11 @@
-var webpack = require('webpack');
-var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-var path = require('path');
+const webpack = require('webpack');
+const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+const WrapperPlugin = require('wrapper-webpack-plugin');
+const path = require('path');
+const libraryName = 'cowsay-tag';
 
-var libraryName = 'cowsay-tag';
 
-
-var scriptConfig = {
+const scriptConfig = {
     entry: __dirname + '/src/index.js',
     devtool: 'source-map',
     output: {
@@ -32,10 +32,16 @@ var scriptConfig = {
       root: path.resolve('./src'),
       extensions: ['', '.js']
     },
-    plugins: [new UglifyJsPlugin({ minimize: true })]
+    plugins: [
+        new UglifyJsPlugin({ minimize: true }),
+        // used so that we can require the prod bundle in test
+        new WrapperPlugin({
+          footer: 'module.exports = cowsay;'
+        })
+    ]
 };
 
-var umdConfig = {
+const umdConfig = {
     entry: __dirname + '/src/index.js',
     devtool: 'source-map',
     output: {
