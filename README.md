@@ -99,7 +99,7 @@ cowsay`This works`;
 
 using the script-friendly module (cowsay-tag.min.js):
 
-[see this jsbin!](https://jsbin.com/betatoriji/1/edit?html,output)
+[see this jsbin!](https://jsbin.com/tisiraqayo/1/edit?html,output)
 
 ## Thanks
 
